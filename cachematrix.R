@@ -1,7 +1,14 @@
-## This set of function allows the creation of a special kind of matrix
-## and the caching of the inverse of it to provide fast recalculations.
+## This set of functions allows the creation of a special kind of matrix
+## that caches the inverse of itself to provide fast recalculations.
 
-## Creates a special matrix that can keep a cache of its inverse.
+## Function makeCacheMatrix creates a special matrix that can keep a 
+## cache of its inverse. Argument can be a regular matrix. If called 
+## without an argument creates an empty matrix.
+## The resulting list obj offers the following functions:
+## obj$get() returns the matrix
+## obj$set(matrix) sets the matrix
+## obj$getinv() returns the cached inverse matrix calculating it if necessary
+## obj$setinv(matrix) sets the inverse matrix
 
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
@@ -19,8 +26,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Computes the inverse on a special matrix object created with
-## makeCacheMatrix. If inverse is already computed returns the cache. 
+## Function cacheSolve computes the inverse on a special matrix 
+## object created with makeCacheMatrix. If inverse is already computed 
+## returns the cache. 
+## Argument is a cached matrix object created with makeCacheMatrix.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
