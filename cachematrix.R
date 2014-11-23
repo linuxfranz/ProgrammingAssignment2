@@ -29,7 +29,8 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Function cacheSolve computes the inverse on a special matrix 
 ## object created with makeCacheMatrix. If inverse is already computed 
 ## returns the cache. 
-## Argument is a cached matrix object created with makeCacheMatrix.
+## Argument is a cached matrix object created with makeCacheMatrix. 
+## Extra arguments are used for the call to solve().
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
@@ -39,7 +40,7 @@ cacheSolve <- function(x, ...) {
         return(i)
     }
     matrix <- x$get()
-    i <- solve(matrix)
+    i <- solve(matrix, ...)
     x$setinv(i)
     i
 }
